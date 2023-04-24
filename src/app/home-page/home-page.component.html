@@ -1,0 +1,10 @@
+<div *ngIf="value != '666.666'">
+    Wpisz zarobki z poprzedniego roku <input [(ngModel)]="value" type="password" #moneyInput> EUR
+    <p>I tak widzimy ze twoje zarobki to: {{value | currency:'EUR'}}</p>
+</div>
+<div *ngIf="value == '666.666'">
+    <p>Idealne zarobki</p>
+    <div *ngFor="let obj of keys">
+        <img src="./assets/{{obj.src}}" alt="{{obj.klik}}">
+    </div>
+</div>
