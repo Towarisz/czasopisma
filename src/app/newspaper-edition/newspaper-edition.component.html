@@ -1,1 +1,89 @@
 <button routerLink="/home">Back</button>
+<table mat-table [dataSource]="displayData" class="mat-elevation-z8">
+  <!-- Name Column -->
+  <ng-container matColumnDef="klik">
+    <th mat-header-cell *matHeaderCellDef>Nazwa</th>
+    <td
+      mat-cell
+      *matCellDef="let element; let i = index"
+      [ngSwitch]="selectedToEdit == i"
+    >
+      <ng-container *ngSwitchCase="false">
+        {{ element.klik }}
+      </ng-container>
+      <ng-container *ngSwitchCase="true">
+        <mat-form-field>
+          <input matInput type="text" [(ngModel)]="nameToEdit" />
+        </mat-form-field>
+      </ng-container>
+    </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="src">
+    <th mat-header-cell *matHeaderCellDef>miniaturka</th>
+    <td
+      mat-cell
+      *matCellDef="let element; let i = index"
+      [ngSwitch]="selectedToEdit == i"
+    >
+      <ng-container *ngSwitchCase="false">
+        {{ element.src }}
+      </ng-container>
+      <ng-container *ngSwitchCase="true">
+        <mat-form-field>
+          <input matInput type="text" [(ngModel)]="srcToEdit" />
+        </mat-form-field>
+      </ng-container>
+    </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="years">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td
+      mat-cell
+      *matCellDef="let element; let i = index"
+      [ngSwitch]="selectedToEdit == i"
+    >
+      <ng-container *ngSwitchCase="false">
+        {{ element.years }}
+      </ng-container>
+      <ng-container *ngSwitchCase="true">
+        <mat-form-field>
+          <mat-select multiple [(ngModel)]="yearsToEdit">
+            <mat-option *ngFor="let year of years" [value]="year">{{
+              year
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </ng-container>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="edit">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td
+      mat-cell
+      *matCellDef="let element; let i = index"
+      [ngSwitch]="selectedToEdit == i"
+    >
+      <ng-container *ngSwitchCase="false">
+        <button mat-icon-button (click)="selectToEdit(i)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </ng-container>
+      <ng-container *ngSwitchCase="true">
+        <button mat-icon-button (click)="cancel()">
+          <mat-icon>close</mat-icon>
+        </button>
+        <button mat-icon-button (click)="send()">
+          <mat-icon>done</mat-icon>
+        </button>
+      </ng-container>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

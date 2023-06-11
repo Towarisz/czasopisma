@@ -23,7 +23,7 @@ const routes: Routes = [
     ],
   },
   { path: 'edit', component: NewspaperEditionComponent },
-  { path: '**', redirectTo: '/home' },
+  { path: '**', redirectTo: 'home' },
 ];
 
 @NgModule({

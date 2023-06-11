@@ -16,6 +16,13 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NewspaperEditionComponent } from './newspaper-edition/newspaper-edition.component';
 
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { NewspaperadditionComponent } from './newspaperaddition/newspaperaddition.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,8 +32,20 @@ import { NewspaperEditionComponent } from './newspaper-edition/newspaper-edition
     NewspaperComponent,
     WelcomePageComponent,
     NewspaperEditionComponent,
+    NewspaperadditionComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, BrowserAnimationsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    MatSelectModule,
+  ],
   providers: [CzasopismaService, IdResolver],
   bootstrap: [AppComponent],
 })
