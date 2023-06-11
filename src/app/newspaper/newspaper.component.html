@@ -1,0 +1,30 @@
+<div class="flex flex-vertical border">
+  <div class="flex border">
+    <div class="border fit">strona tytulowa</div>
+    <div class="border fit">plik</div>
+    <div class="border fit">pismo</div>
+    <div class="border fit">darczyńcy</div>
+  </div>
+  <div *ngFor="let obj of selectedData">
+    <div *ngIf="obj.miniaturka" class="flex border">
+      <img
+        class="border size-20"
+        src="http://atarionline.pl/biblioteka/czasopisma/{{
+          this.selectedNewspaper
+        }}/{{ obj.miniaturka }}"
+      />
+      <div class="border size-20">
+        format:{{ obj.format }}<br />stron:{{ obj.stron }}
+      </div>
+      <div class="border size-20">
+        nazwa:{{ obj.nazwa }}<br />numer:{{ obj.numer }}<br />wydawca:{{
+          obj.wydawca
+        }}
+      </div>
+      <div class="border size-20">
+        skan:{{ obj.skan }}<br />przetworzenie:{{ obj.przetworzenie
+        }}<br />skan:{{ obj.skan }}
+      </div>
+    </div>
+  </div>
+</div>

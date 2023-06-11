@@ -1,0 +1,6 @@
+<button routerLink="/home">Back</button>
+<button *ngFor="let obj of selectedYears" routerLink="./{{ obj }}">
+  {{ obj }}
+</button>
+<button routerLink="./all">wszystkie</button>
+<router-outlet></router-outlet>

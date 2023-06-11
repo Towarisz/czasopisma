@@ -1,0 +1,3 @@
+Wpisz zarobki z poprzedniego roku
+<input [(ngModel)]="value" type="password" #moneyInput /> EUR
+<p>I tak widzimy ze twoje zarobki to: {{ value | currency : "EUR" }}</p>

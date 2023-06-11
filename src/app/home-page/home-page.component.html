@@ -1,10 +1,53 @@
 <div *ngIf="value != '666.666'">
-    Wpisz zarobki z poprzedniego roku <input [(ngModel)]="value" type="password" #moneyInput> EUR
-    <p>I tak widzimy ze twoje zarobki to: {{value | currency:'EUR'}}</p>
+  Wpisz zarobki z poprzedniego roku
+  <input [(ngModel)]="value" type="password" #moneyInput /> EUR
+  <p>I tak widzimy ze twoje zarobki to: {{ value | currency : "EUR" }}</p>
 </div>
-<div *ngIf="value == '666.666'">
-    <p>Idealne zarobki</p>
-    <div *ngFor="let obj of keys">
-        <img src="http://atarionline.pl/biblioteka/czasopisma/img/{{obj.src}}" alt="{{obj.klik}}">
+<div *ngIf="value == '666.666' && selectedNewspaper == ''">
+  <p>Idealne zarobki</p>
+  <div *ngFor="let obj of keys">
+    <img
+      src="http://atarionline.pl/biblioteka/czasopisma/img/{{ obj.src }}"
+      alt="{{ obj.klik }}"
+      (click)="selectNewspaper(obj.klik)"
+    />
+  </div>
+</div>
+<div *ngIf="selectedNewspaper != ''">
+  <button (click)="deselectNewspaper()">Back</button>
+  <button *ngFor="let obj of selectedYears" (click)="selectYear(obj)">
+    {{ obj }}
+  </button>
+  <button (click)="selectYear('-1')">wszystkie</button>
+</div>
+<div
+  *ngIf="selectedNewspaper != '' && selectedYear != ''"
+  class="flex flex-vertical border"
+>
+  <div class="flex border">
+    <div class="border fit">strona tytulowa</div>
+    <div class="border fit">plik</div>
+    <div class="border fit">pismo</div>
+    <div class="border fit">darczyńcy</div>
+  </div>
+  <div *ngFor="let obj of selectedData" class="flex border">
+    <img
+      class="border size-20"
+      src="http://atarionline.pl/biblioteka/czasopisma/{{
+        this.selectedNewspaper
+      }}/{{ obj.miniaturka }}"
+    />
+    <div class="border size-20">
+      format:{{ obj.format }}<br />stron:{{ obj.stron }}
     </div>
+    <div class="border size-20">
+      nazwa:{{ obj.nazwa }}<br />numer:{{ obj.numer }}<br />wydawca:{{
+        obj.wydawca
+      }}
+    </div>
+    <div class="border size-20">
+      skan:{{ obj.skan }}<br />przetworzenie:{{ obj.przetworzenie
+      }}<br />skan:{{ obj.skan }}
+    </div>
+  </div>
 </div>

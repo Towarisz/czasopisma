@@ -1,0 +1,11 @@
+<button routerLink="/edit">edycja czasopism</button>
+<div>
+  <p>Idealne zarobki</p>
+  <div *ngFor="let obj of keys">
+    <img
+      src="http://atarionline.pl/biblioteka/czasopisma/img/{{ obj.src }}"
+      alt="{{ obj.klik }}"
+      routerLink="./{{ obj.klik }}"
+    />
+  </div>
+</div>
